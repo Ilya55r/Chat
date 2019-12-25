@@ -1,0 +1,32 @@
+//
+// Copyright (c) ZeroC, Inc. All rights reserved.
+//
+
+slice {
+    java {
+        include = ["${projectDir}"]
+        srcDir = '.'
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir '.'
+        }
+    }
+}
+
+dependencies {
+    implementation "com.zeroc:ice:${project.iceArtifactVersion}"
+    runtimeOnly "com.zeroc:icessl:${project.iceArtifactVersion}"
+    implementation "com.zeroc:icebox:${project.iceArtifactVersion}"
+    runtimeOnly "org.apache.commons:commons-compress:1.14"
+}
+
+// Don't create the default jar.
+jar.enabled = false
+
+demoJar("client")
+demoJar("service", "")
+demoIceBoxServer()

@@ -1,0 +1,21 @@
+<state>
+  <timestamp value='1577272355975' />
+  <sourceSet name='default'>
+    <source name='D:\Chat\rmi\zeroCice\java\Chat\src\main\slice\Chat.ice'>
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\_Marker.java' />
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\InvalidMessageException.java' />
+    </source>
+    <source name='D:\Chat\rmi\zeroCice\java\Chat\src\main\slice\ChatSession.ice'>
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\_Marker.java' />
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\ChatRoomCallback.java' />
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\ChatSession.java' />
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\ChatRoomCallbackPrx.java' />
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\_ChatRoomCallbackPrxI.java' />
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\ChatSessionPrx.java' />
+      <file name='D:\Chat\rmi\zeroCice\java\Chat\build\generated-src\com\zeroc\demos\Chat\_ChatSessionPrxI.java' />
+    </source>
+    <arg value='C:\Program Files\ZeroC\Ice-3.7.3\\bin\slice2java.exe' />
+    <arg value='-IC:\Program Files\ZeroC\Ice-3.7.3\\slice' />
+    <arg value='-ID:\Chat\rmi\zeroCice\java\Chat/src/main/slice' />
+  </sourceSet>
+</state>

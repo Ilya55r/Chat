@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="C:/Gradle/gradle-6.0.1" />
+        <option name="gradleJvm" value="11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Chat" />
+            <option value="$PROJECT_DIR$/Database/library" />
+            <option value="$PROJECT_DIR$/Glacier2/callback" />
+            <option value="$PROJECT_DIR$/Glacier2/simpleChat" />
+            <option value="$PROJECT_DIR$/Ice/async" />
+            <option value="$PROJECT_DIR$/Ice/asyncInvocation" />
+            <option value="$PROJECT_DIR$/Ice/bidir" />
+            <option value="$PROJECT_DIR$/Ice/callback" />
+            <option value="$PROJECT_DIR$/Ice/context" />
+            <option value="$PROJECT_DIR$/Ice/hello" />
+            <option value="$PROJECT_DIR$/Ice/interceptor" />
+            <option value="$PROJECT_DIR$/Ice/interrupt" />
+            <option value="$PROJECT_DIR$/Ice/invoke" />
+            <option value="$PROJECT_DIR$/Ice/latency" />
+            <option value="$PROJECT_DIR$/Ice/minimal" />
+            <option value="$PROJECT_DIR$/Ice/multicast" />
+            <option value="$PROJECT_DIR$/Ice/nested" />
+            <option value="$PROJECT_DIR$/Ice/optional" />
+            <option value="$PROJECT_DIR$/Ice/plugin" />
+            <option value="$PROJECT_DIR$/Ice/properties" />
+            <option value="$PROJECT_DIR$/Ice/serialize" />
+            <option value="$PROJECT_DIR$/Ice/session" />
+            <option value="$PROJECT_DIR$/Ice/swing" />
+            <option value="$PROJECT_DIR$/Ice/throughput" />
+            <option value="$PROJECT_DIR$/IceBox/hello" />
+            <option value="$PROJECT_DIR$/IceDiscovery/hello" />
+            <option value="$PROJECT_DIR$/IceDiscovery/replication" />
+            <option value="$PROJECT_DIR$/IceGrid/icebox" />
+            <option value="$PROJECT_DIR$/IceGrid/simple" />
+            <option value="$PROJECT_DIR$/IceStorm/clock" />
+            <option value="$PROJECT_DIR$/Manual/lifecycle" />
+            <option value="$PROJECT_DIR$/Manual/simpleFilesystem" />
+          </set>
+        </option>
+        <option name="useAutoImport" value="true" />
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

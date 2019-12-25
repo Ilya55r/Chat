@@ -1,0 +1,66 @@
+//
+// Copyright (c) ZeroC, Inc. All rights reserved.
+//
+
+slice {
+    java {
+        include = ["${projectDir}"]
+        srcDir = '.'
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir '.'
+        }
+    }
+}
+
+dependencies {
+    implementation "com.zeroc:ice:${project.iceArtifactVersion}"
+    runtimeOnly "com.zeroc:icessl:${project.iceArtifactVersion}"
+    implementation "com.zeroc:icestorm:${project.iceArtifactVersion}"
+    runtimeOnly "org.apache.commons:commons-compress:1.14"
+}
+
+// Create a jar for the publisher & subscriber which includes everything in the demo.
+task publisherJar(type: Jar) {
+    version = ""
+    baseName = "publisher"
+    from(sourceSets.main.output) {
+        include "**"
+    }
+}
+
+task subscriberJar(type: Jar) {
+    version = ""
+    baseName = "subscriber"
+    from(sourceSets.main.output) {
+        include "**"
+    }
+}
+
+publisherJar {
+    manifest {
+        attributes("Main-Class": "Publisher")
+        attributes("Class-Path": configurations.runtimeClasspath.resolve().collect { it.toURI() }.join(' '))
+    }
+}
+
+subscriberJar {
+    manifest {
+        attributes("Main-Class": "Subscriber")
+        attributes("Class-Path": configurations.runtimeClasspath.resolve().collect { it.toURI() }.join(' '))
+    }
+}
+
+artifacts {
+    archives publisherJar, subscriberJar;
+}
+
+clean {
+    delete fileTree(dir: 'db', excludes:['.gitignore', 'DB_CONFIG'])
+}
+
+jar.enabled = false

@@ -1,0 +1,38 @@
+//
+// Copyright (c) ZeroC, Inc. All rights reserved.
+//
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+
+subprojects {
+    project.group = "com.zeroc"
+    apply plugin: 'idea'
+}
+
+allprojects {
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
+
+ext {
+    compileSdkVersion = 29
+    minSdkVersion = 24
+    targetSdkVersion = 29
+}

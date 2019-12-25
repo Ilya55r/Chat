@@ -1,0 +1,66 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "net.sf.proguard:proguard-gradle:6.1.1"
+    }
+}
+
+slice {
+    java {
+        include = ["${projectDir}/src/main/slice"]
+    }
+}
+
+dependencies {
+    implementation 'com.jgoodies:jgoodies-common:1.8.0'
+    implementation 'com.jgoodies:jgoodies-looks:2.6.0'
+    implementation 'com.jgoodies:jgoodies-forms:1.8.0'
+    implementation "com.zeroc:ice:${project.iceArtifactVersion}"
+    runtimeOnly "com.zeroc:icessl:${project.iceArtifactVersion}"
+    implementation "com.zeroc:glacier2:${project.iceArtifactVersion}"
+}
+
+if(JavaVersion.current() == JavaVersion.VERSION_11) {
+    jar {
+        archiveName = "Chat.jar"
+        destinationDir = new File("${projectDir}")
+        manifest {
+            attributes 'Main-Class': "com.zeroc.demos.Chat.MainView"
+            attributes("Class-Path": configurations.runtimeClasspath.resolve().collect{ it.toURI() }.join(' '))
+        }
+    }
+}
+else {
+    jar {
+        archiveName = "ChatTEMP.jar"
+        manifest {
+            attributes 'Main-Class': "com.zeroc.demos.Chat.MainView"
+        }
+    }
+
+    def javaHome = System.properties['java.home']
+
+    task proguard(type: proguard.gradle.ProGuardTask, dependsOn: jar) {
+        injars configurations.runtimeClasspath.resolve(), filter: '!META-INF/**,!module-info.class'
+        injars "${buildDir}/libs/ChatTEMP.jar"
+        if(JavaVersion.current() <= JavaVersion.VERSION_1_8) {
+            libraryjars "${javaHome}/lib/rt.jar"
+            libraryjars "${javaHome}/lib/jsse.jar"
+        } else {
+            libraryjars "${javaHome}/jmods/java.base.jmod"
+            libraryjars "${javaHome}/jmods/java.logging.jmod"
+            libraryjars "${javaHome}/jmods/java.desktop.jmod"
+            libraryjars "${javaHome}/jmods/java.prefs.jmod"
+        }
+        outjars "Chat.jar"
+        configuration "chatdemo.pro"
+    }
+    assemble.dependsOn(proguard)
+}
+
+clean {
+    delete("Chat.jar")
+}
