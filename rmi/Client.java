@@ -19,12 +19,18 @@ public class Client extends JFrame {
 	JButton btnSend;
 	//structure unit
 	JPanel messInfo;
+	//listener thread
+	Thread th;
+	//Chat
+	Chat chat;
+	//Registry
+	Registry registry;
 
 	public Client(String name){
 		super(name);
 		messInfo = new JPanel();
 		messInfo.setLayout(new FlowLayout());
-		area = new TextArea("Messages"+"\n",10,45);
+		area = new TextArea("Messages"+"\n",10,45,TextArea.SCROLLBARS_BOTH);
 		area.setEnabled(false);
 		text = new TextField("", 20);
 		textName = new TextField("name", 10);
@@ -34,7 +40,7 @@ public class Client extends JFrame {
 		String str = text.getText();
 		text.setText("");
 		try{
-		chat.sendMessage(name+" : "+str);
+		chat.sendMessage(textName.getText()+" : "+str);
 		area.setText(chat.getMessage().toString());
 		}catch(Exception ex){}
 		}
@@ -48,10 +54,14 @@ public class Client extends JFrame {
 		setLocation(500,500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500,400);
+		setResizable(false);
 		setVisible(true);
+		
 		try{
 			registry = LocateRegistry.getRegistry(2099);
 			chat = (Chat) registry.lookup(UNIC_CHAT_NAME);
+			th = new Thread(new MessageListener(chat, area));
+			th.start();
 		}catch(Exception e){}
 		
 	}
